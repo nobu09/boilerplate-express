@@ -1,6 +1,13 @@
 var express = require('express');
 var app = express();
 
+const myMiddleware = function(req, res, next) {
+  console.log(`${req.method} ${req.path} - ${req.ip}`)
+  next();
+}
+
+app.use(myMiddleware);
+
 app.use('/public', express.static(__dirname + '/public'));
 
 app.get('/', function(req, res) {
