@@ -23,6 +23,15 @@ app.get('/json', function(req, res) {
   res.json({ "message": message});
 });
 
+const timeMiddleware = function(req, res, next) {
+  req.time = new Date().toString();
+  next();
+}
+
+app.get('/now', timeMiddleware, function(req, res) {
+  res.json({ time: req.time });
+});
+
 module.exports = app;
 
 
