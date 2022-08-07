@@ -39,16 +39,8 @@ app.get('/:word/echo', function(req, res) {
   res.json({ echo: req.params.word });
 });
 
-
-app.get('/name', function(req, res) {
-  const firstName = req.query['first'] || '';
-  const lastName = req.query['last'] || '';
-  res.json({ name: `${firstName} ${lastName}` });
-});
-
-app.post('/name', function(req, _res) {
-  const message = JSON.stringify(req.body);
-  console.log(message);
+app.post('/name', function(req, res) {
+  res.json({ name: `${req.body.first} ${req.body.last}` });
 });
 
 module.exports = app;
