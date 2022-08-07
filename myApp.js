@@ -44,6 +44,11 @@ app.get('/name', function(req, res) {
   const firstName = req.query['first'] || '';
   const lastName = req.query['last'] || '';
   res.json({ name: `${firstName} ${lastName}` });
-})
+});
+
+app.post('/name', function(req, _res) {
+  const message = JSON.stringify(req.body);
+  console.log(message);
+});
 
 module.exports = app;
